@@ -1,33 +1,34 @@
 certbot_certs
 =========
 
-A brief description of the role goes here.
+This role generates and apply let's encrypt ssl certificate to a domain.
+It is not fully functional though, some improvements, and more webservers will be supported later.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+EL7:
+The epel repository is required for the certbot app installation.
 
 Role Variables
 --------------
-website url:
-website user:
-website root dir:
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+website url: domain name defaults to {{ ansible_hostname }} which is usually the hostname
+website user: the user owner of the website account defaults to root
+website root dir: the root directory where the .well-known dir will be created defaults to /var/www/html
+webserver: the webserver where the ssl certificate will be applied to, defaults to nginx - installed from source /usr/local/nginx - more webservers support may come later.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Depends on the geerlingguy.certbot https://galaxy.ansible.com/geerlingguy/certbot/  for certbot installation 
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Here is an example of a cpanel server, note that the default webserver is nginx so for this to work, you need nginx configured as a reversec proxy.
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: hasanin.certbot_certs, website_url: "domain.com", website_user: "domain", website_root: "/home/domain/public_html", }
 
 License
 -------
@@ -37,4 +38,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+later.
