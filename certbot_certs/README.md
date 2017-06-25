@@ -28,7 +28,7 @@ Here is an example of a cpanel server, note that the default webserver is nginx 
 
     - hosts: servers
       roles:
-         - { role: hasanin.certbot_certs, website_url: "domain.com", website_user: "domain", website_root: "/home/domain/public_html", }
+         - { role: certbot_certs, website_url: "domain.com", website_user: "domain", website_root: "/home/domain/public_html", }
 
 License
 -------
