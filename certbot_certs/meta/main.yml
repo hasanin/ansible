@@ -1,0 +1,26 @@
+---
+  # Certbot documentation page: https://certbot.eff.org/
+galaxy_info:
+  author: hasanin
+  description: "This will create and install a let's encrypt certificate."
+  company: "Arabhosters"
+  license: license (GPLv2, CC-BY, etc)
+  min_ansible_version: 1.2
+
+  platforms:
+   - name: EL
+     versions:
+     - 7
+  # - name: SomePlatform
+  #   versions:
+  #   - all
+  #   - 1.0
+  #   - 7
+  #   - 99.99
+  galaxy_tags:
+    - certbot
+    - letsencrypt
+    - ssl
+    - web
+dependencies:
+  - { role: geerlingguy.certbot, ansible_user: root}

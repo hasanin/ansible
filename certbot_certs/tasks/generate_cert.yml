@@ -1,0 +1,7 @@
+---
+  # Run the certbot command to generate the certifacte
+- name: generate cert
+  command: certbot certonly -a webroot --webroot-path={{ website_root }} -d {{ website_url }} -d www.{{ website_url }} creates=/etc/letsencrypt/live/{{ website_url }}
+
+- name: generate dhparams
+  command: openssl dhparam -out {{ ssl_path }}/dhparams.pem 2048 creates={{ ssl_path }}/dhparams.pem

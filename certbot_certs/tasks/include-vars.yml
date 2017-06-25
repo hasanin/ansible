@@ -1,0 +1,6 @@
+---
+- name: Load a variable file based on the web server, defaults to nginx.
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ webserver }}.yml"
+    - "default.yml"

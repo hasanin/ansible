@@ -1,0 +1,5 @@
+---
+# defaults file for certbot_certs
+website_url: "{{ ansible_nodename }}"
+website_user: root
+website_root: "/var/www/html"

@@ -1,0 +1,18 @@
+---
+# tasks file for certbot_certs
+- include: include-vars.yml
+
+- name: create .well-known directory
+  file:
+    path: "{{ website_root }}/.well-known"
+    state: directory
+    recurse: yes
+    owner: "{{ website_user }}"
+    group: "{{ website_user }}"
+    mode: 755
+
+- include: "{{ webserver }}_well-known.yml"
+
+- include: generate_cert.yml
+
+- include: nginx_post_generate.yml

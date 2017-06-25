@@ -1,0 +1,10 @@
+---
+  # add ssl server config to vhost file
+
+- name: create link to cert files
+  file:
+    path: "{{ ssl_path }}/{{ website_url }}"
+    state: link
+    src: "/etc/letsencrypt/live/{{ website_url }}"
+
+#- name: add ssl vhost conf

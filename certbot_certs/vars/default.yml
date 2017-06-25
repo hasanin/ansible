@@ -1,0 +1,5 @@
+---
+# default vars  for certbot_certs
+webserver: "nginx"
+ssl_path: "/usr/local/nginx/ssl"
+vhost_conf: "/usr/local/nginx/vhosts/{{ website_url }}.conf"

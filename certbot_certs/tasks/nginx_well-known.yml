@@ -1,0 +1,20 @@
+---
+  # Adds rule to allow .well-known access to the nginx vhost
+- name: allow .well-known access
+  blockinfile:
+    path: "{{ vhost_conf }}"
+    insertbefore:  "location / {"
+    backup: yes
+    marker: "###-- {mark} ANSIBLE MANAGED BLOCK --###"
+    block: |
+      location ~ /.well-known {
+        allow all;
+        }
+  notify:
+    - restart nginx
+
+- name: ensure ssl_path exists
+  file:
+    path: "{{ ssl_path }}"
+    state: directory
+    mode: 755
