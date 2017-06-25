@@ -12,7 +12,7 @@ The epel repository is required for the certbot app installation.
 
 Role Variables
 --------------
-website url: domain name defaults to {{ ansible_hostname }} which is usually the hostname
+website url: domain name defaults to {{ ansible_nodename }} which is usually the hostname
 website user: the user owner of the website account defaults to root
 website root dir: the root directory where the .well-known dir will be created defaults to /var/www/html
 webserver: the webserver where the ssl certificate will be applied to, defaults to nginx - installed from source /usr/local/nginx - more webservers support may come later.
